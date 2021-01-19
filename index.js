@@ -10,7 +10,6 @@ var dia = data.getDate() - 1; // 1-31
 var mes = data.getMonth() + 1; // 0-11 (zero=janeiro)
 var ano4 = data.getFullYear(); // 4 d�gitos
 var dataHoje = `${ano4}-${('0' + mes).slice(-2)}-${('0' + dia).slice(-2)}`;
-//console.log(dataHoje);
 var dataBR = `${('0' + dia).slice(-2)}/${('0' + mes).slice(-2)}/${ano4}`
 
 
@@ -18,7 +17,6 @@ var dataBR = `${('0' + dia).slice(-2)}/${('0' + mes).slice(-2)}/${ano4}`
 function preparafile(csv) {
     fs.writeFile(process.env.FILE, csv, function (err) {
         if (err) throw err;
-        //console.log('File is created successfully.');
     });
 }
 
