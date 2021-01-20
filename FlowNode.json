@@ -1,0 +1,163 @@
+[
+    {
+        "id": "eda2d002.b31e6",
+        "type": "inject",
+        "z": "bb64f04a.0fbe1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 15 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 940,
+        "wires": [
+            [
+                "92b58443.f6c928"
+            ]
+        ]
+    },
+    {
+        "id": "92b58443.f6c928",
+        "type": "exec",
+        "z": "bb64f04a.0fbe1",
+        "command": "C:\\nodeScript\\start.lnk",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 400,
+        "y": 940,
+        "wires": [
+            [
+                "b5f5954e.3d4038"
+            ],
+            [
+                "b5f5954e.3d4038"
+            ],
+            [
+                "b5f5954e.3d4038"
+            ]
+        ]
+    },
+    {
+        "id": "12f9b23.3c0924e",
+        "type": "twitter out",
+        "z": "bb64f04a.0fbe1",
+        "twitter": "",
+        "name": "Tweet",
+        "x": 650,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "8a98c8fe.f253e8",
+        "type": "function",
+        "z": "bb64f04a.0fbe1",
+        "name": "",
+        "func": "msg.payload = msg.payload.texto + \" \\t 💉  \\n \\n\\t #COVIDVacination\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 320,
+        "y": 1000,
+        "wires": [
+            [
+                "704d63ae.148eec",
+                "85d44e15.d332a"
+            ]
+        ]
+    },
+    {
+        "id": "706d3a6d.dac854",
+        "type": "http in",
+        "z": "bb64f04a.0fbe1",
+        "name": "",
+        "url": "/postCovid",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 1000,
+        "wires": [
+            [
+                "8a98c8fe.f253e8"
+            ]
+        ]
+    },
+    {
+        "id": "704d63ae.148eec",
+        "type": "http response",
+        "z": "bb64f04a.0fbe1",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 480,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "85d44e15.d332a",
+        "type": "delay",
+        "z": "bb64f04a.0fbe1",
+        "name": "",
+        "pauseType": "random",
+        "timeout": "14",
+        "timeoutUnits": "minutes",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "10",
+        "randomLast": "90",
+        "randomUnits": "minutes",
+        "drop": false,
+        "x": 480,
+        "y": 1000,
+        "wires": [
+            [
+                "b5f5954e.3d4038",
+                "12f9b23.3c0924e"
+            ]
+        ]
+    },
+    {
+        "id": "bb0958df.2af4e8",
+        "type": "comment",
+        "z": "bb64f04a.0fbe1",
+        "name": "BOT covid twitter",
+        "info": "",
+        "x": 150,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "b5f5954e.3d4038",
+        "type": "debug",
+        "z": "bb64f04a.0fbe1",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 960,
+        "wires": []
+    }
+]
