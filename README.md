@@ -5,6 +5,6 @@
 
  No Node-red é configurado uma conta do Twitter onde é enviado o Tweet.
 
- É possivel importar um flow de exemplo do arquivo FlowNode.json
+ É possivel importar um flow de exemplo no arquivo FlowNode.json
 
  Siga o Bot https://twitter.com/BrCovid
