@@ -3,7 +3,9 @@ const csv = require('csvtojson');
 var fs = require('fs');
 require('dotenv').config()
 
-const csvFilePath = process.env.FILE
+var csvFilePath = process.env.FILE
+csvFilePath = csvFilePath.toString()
+console.log(process.env.FILE);
 
 var data = new Date();
 var dia = data.getDate() - 1; // 1-31
@@ -15,7 +17,7 @@ var dataBR = `${('0' + dia).slice(-2)}/${('0' + mes).slice(-2)}/${ano4}`
 
 
 function preparafile(csv) {
-    fs.writeFile(process.env.FILE, csv, function (err) {
+    fs.writeFile(csvFilePath, csv, function (err) {
         if (err) throw err;
     });
 }
@@ -34,7 +36,7 @@ function readFile() {
                 return e.location == 'World'
             })
             if (World.length > 0) {
-                request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " no Mundo 🌎, " + parseInt(World[0].total_vaccinations).toLocaleString() + " 💉 #COVIDVacination")
+                request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " no Mundo, " + parseInt(World[0].total_vaccinations).toLocaleString())
             }
 
             //brasil
@@ -42,7 +44,7 @@ function readFile() {
                 return e.location == 'Brazil'
             })
             if (bra.length > 0) {
-                request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " no Brasil 🇧🇷, " + parseInt(bra[0].total_vaccinations).toLocaleString() + " 💉 #brasil #covidvaccination")
+                request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " no Brasil, " + parseInt(bra[0].total_vaccinations).toLocaleString())
             }
 
             //estados unidos
@@ -50,7 +52,7 @@ function readFile() {
                 return e.location == 'United States'
             })
             if (usa.length > 0) {
-                request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " nos Estados Unidos 🇺🇸, " + parseInt(usa[0].total_vaccinations).toLocaleString() + " 💉 #COVIDVacination")
+                request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " nos Estados Unidos, " + parseInt(usa[0].total_vaccinations).toLocaleString())
             }
 
             //Inglaterra
@@ -58,7 +60,7 @@ function readFile() {
                 return e.location == 'United Kingdom'
             })
             if (gbr.length > 0) {
-                request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " na Inglaterra, " + parseInt(gbr[0].total_vaccinations).toLocaleString() + " 💉")
+                request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " na Inglaterra, " + parseInt(gbr[0].total_vaccinations).toLocaleString())
             }
 
             //Canada
@@ -66,7 +68,7 @@ function readFile() {
                 return e.location == 'Canada'
             })
             if (can.length > 0) {
-                request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " no Canada 🇨🇦, " + parseInt(can[0].total_vaccinations).toLocaleString() + " 💉")
+                request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " no Canada, " + parseInt(can[0].total_vaccinations).toLocaleString())
             }
 
             //Chile
@@ -74,7 +76,7 @@ function readFile() {
                 return e.location == 'Chile'
             })
             if (chl.length > 0) {
-                request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " no Chile, " + parseInt(chl[0].total_vaccinations).toLocaleString() + " 💉")
+                request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " no Chile, " + parseInt(chl[0].total_vaccinations).toLocaleString())
             }
 
             //Italy
@@ -82,7 +84,7 @@ function readFile() {
                 return e.location == 'Italy'
             })
             if (ita.length > 0) {
-                request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " na Italia 🍕, " + parseInt(ita[0].total_vaccinations).toLocaleString() + " 💉 #COVIDVacination")
+                request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " na Italia, " + parseInt(ita[0].total_vaccinations).toLocaleString())
             }
 
             //Spain
@@ -90,7 +92,7 @@ function readFile() {
                 return e.location == 'Spain'
             })
             if (spa.length > 0) {
-                request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " na Espanha, " + parseInt(spa[0].total_vaccinations).toLocaleString() + " 💉")
+                request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " na Espanha, " + parseInt(spa[0].total_vaccinations).toLocaleString())
             }
 
 
