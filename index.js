@@ -8,7 +8,8 @@ csvFilePath = csvFilePath.toString()
 console.log(process.env.FILE);
 
 var data = new Date();
-var dia = data.getDate() - 1; // 1-31
+data.setDate(data.getDate() - 1);
+var dia = data.getDate(); // 1-31
 var mes = data.getMonth() + 1; // 0-11 (zero=janeiro)
 var ano4 = data.getFullYear(); // 4 d�gitos
 var dataHoje = `${ano4}-${('0' + mes).slice(-2)}-${('0' + dia).slice(-2)}`;
@@ -35,7 +36,7 @@ function readFile() {
             var World = today.filter((e) => {
                 return e.location == 'World'
             })
-            if (World.length > 0 && !isNaN(parseInt(World[0].total_vaccinations)) ) {
+            if (World.length > 0 && !isNaN(parseInt(World[0].total_vaccinations))) {
                 request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " no Mundo, " + parseInt(World[0].total_vaccinations).toLocaleString())
             }
 
@@ -52,7 +53,7 @@ function readFile() {
                 return e.location == 'United States'
             })
             if (usa.length > 0 && !isNaN(parseInt(usa[0].total_vaccinations))) {
-                console.log(usa[0].total_vaccinations );
+                console.log(usa[0].total_vaccinations);
                 request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " nos Estados Unidos, " + parseInt(usa[0].total_vaccinations).toLocaleString())
             }
 
