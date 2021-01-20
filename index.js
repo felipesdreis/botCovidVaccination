@@ -35,7 +35,7 @@ function readFile() {
             var World = today.filter((e) => {
                 return e.location == 'World'
             })
-            if (World.length > 0) {
+            if (World.length > 0 && !isNaN(parseInt(World[0].total_vaccinations)) ) {
                 request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " no Mundo, " + parseInt(World[0].total_vaccinations).toLocaleString())
             }
 
@@ -43,7 +43,7 @@ function readFile() {
             var bra = today.filter((e) => {
                 return e.location == 'Brazil'
             })
-            if (bra.length > 0) {
+            if (bra.length > 0 && !isNaN(parseInt(bra[0].total_vaccinations))) {
                 request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " no Brasil, " + parseInt(bra[0].total_vaccinations).toLocaleString())
             }
 
@@ -51,7 +51,8 @@ function readFile() {
             var usa = today.filter((e) => {
                 return e.location == 'United States'
             })
-            if (usa.length > 0) {
+            if (usa.length > 0 && !isNaN(parseInt(usa[0].total_vaccinations))) {
+                console.log(usa[0].total_vaccinations );
                 request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " nos Estados Unidos, " + parseInt(usa[0].total_vaccinations).toLocaleString())
             }
 
@@ -59,7 +60,7 @@ function readFile() {
             var gbr = today.filter((e) => {
                 return e.location == 'United Kingdom'
             })
-            if (gbr.length > 0) {
+            if (gbr.length > 0 && !isNaN(parseInt(gbr[0].total_vaccinations))) {
                 request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " na Inglaterra, " + parseInt(gbr[0].total_vaccinations).toLocaleString())
             }
 
@@ -67,7 +68,7 @@ function readFile() {
             var can = today.filter((e) => {
                 return e.location == 'Canada'
             })
-            if (can.length > 0) {
+            if (can.length > 0 && !isNaN(parseInt(can[0].total_vaccinations))) {
                 request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " no Canada, " + parseInt(can[0].total_vaccinations).toLocaleString())
             }
 
@@ -75,7 +76,8 @@ function readFile() {
             var chl = today.filter((e) => {
                 return e.location == 'Chile'
             })
-            if (chl.length > 0) {
+            if (chl.length > 0 && !isNaN(parseInt(chl[0].total_vaccinations))) {
+                console.log(chl[0].total_vaccinations);
                 request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " no Chile, " + parseInt(chl[0].total_vaccinations).toLocaleString())
             }
 
@@ -83,7 +85,7 @@ function readFile() {
             var ita = today.filter((e) => {
                 return e.location == 'Italy'
             })
-            if (ita.length > 0) {
+            if (ita.length > 0 && !isNaN(parseInt(ita[0].total_vaccinations))) {
                 request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " na Italia, " + parseInt(ita[0].total_vaccinations).toLocaleString())
             }
 
@@ -91,7 +93,7 @@ function readFile() {
             var spa = today.filter((e) => {
                 return e.location == 'Spain'
             })
-            if (spa.length > 0) {
+            if (spa.length > 0 && !isNaN(parseInt(spa[0].total_vaccinations))) {
                 request.get('http://localhost:1880/postCovid?texto=Vacinados até o dia ' + dataBR + " na Espanha, " + parseInt(spa[0].total_vaccinations).toLocaleString())
             }
 
